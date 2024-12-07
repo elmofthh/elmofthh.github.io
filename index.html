@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        header {
+            height: 100vh;
+            background: linear-gradient(120deg, #6a11cb, #2575fc); /* Blue to Purple gradient */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 4rem;
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5); /* Stronger text shadow for better visibility */
+            background: linear-gradient(45deg, #ff9a8b, #ff6a88, #ff6347); /* Bright colors for contrast */
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: moveText 5s linear infinite;
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-20px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        header p {
+            font-size: 1.6rem;
+            margin: 20px 0;
+            font-weight: 300;
+            max-width: 800px;
+            color: #fff;
+        }
+
+        .caption {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 500;
+            margin-top: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .btn-group a {
+            text-decoration: none;
+            color: white;
+            background: #4caf50;
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1);
+        }
+        .btn-group a:hover {
+            background: #388e3c;
+            transform: scale(1.1);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            header p {
+                font-size: 1.3rem;
+            }
+            .btn-group a {
+                font-size: 1rem;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Amazing Website</h1>
+        <p>Your one-stop destination for everything cool!</p>
+        <div class="caption">
+            Selamat datang di web ini! Prediksi Cuaca dan Kecepatan angin bisa di web ini!!
+        </div>
+        <div class="btn-group">
+            <a href="../Contact%20Person/index.html">Contact Person</a>
+            <a href="../Profile/index.html">Profile</a>
+            <a href="../News/index.html">News</a>
+            <a href="../Kecepatan%20Angin/index.html">Kecepatan Angin</a>
+            <a href="../Cuaca/index.html">Cuaca</a>
+        </div>
+    </header>
+</body>
+</html>
