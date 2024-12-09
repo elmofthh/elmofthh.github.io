@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediktor Kecepatan Angin per Provinsi</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
+            overflow-x: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Animation when page loads */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            background: #0288d1;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #0288d1;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 1.2rem;
+            margin: 0 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #01579b;
+        }
+
+        /* Main content container */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button {
+            background: #0288d1;
+            color: white;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #01579b;
+            transform: scale(1.05);
+        }
+
+        /* Result display */
+        .result {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result span {
+            font-weight: bold;
+            color: #0288d1;
+        }
+
+        /* Scene (animation background) */
+        .scene {
+            margin-top: 30px;
+            height: 300px;
+            position: relative;
+            background: linear-gradient(to top, #a3d977, #87ceeb);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .house {
+            position: absolute;
+            bottom: 50px;
+            left: 20%;
+            width: 150px;
+            height: 100px;
+            background: #ffcccb;
+            border: 2px solid #d2691e;
+            border-radius: 5px;
+        }
+
+        .house:before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 0;
+            height: 0;
+            border-left: 75px solid transparent;
+            border-right: 75px solid transparent;
+            border-bottom: 60px solid #d2691e;
+        }
+
+        .tree {
+            position: absolute;
+            bottom: 50px;
+            right: 20%;
+            width: 50px;
+            height: 100px;
+            background: #8b4513;
+            border-radius: 8px;
+        }
+
+        .tree .leaves {
+            position: absolute;
+            top: -70px;
+            left: -40px;
+            width: 130px;
+            height: 130px;
+            background: #228b22;
+            border-radius: 50%;
+            animation: swayLeaves 3s infinite ease-in-out;
+        }
+
+        .dust {
+            position: absolute;
+            bottom: 30px;
+            width: 10px;
+            height: 10px;
+            background: rgba(139, 69, 19, 0.8);
+            border-radius: 50%;
+            opacity: 0;
+            animation: dustMoveRight 3s linear infinite;
+        }
+
+        @keyframes dustMoveRight {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(300px) translateY(0); /* Gerakkan ke kanan */
+                opacity: 1;
+            }
+        }
+
+        /* Variasi posisi untuk setiap debu */
+        .dust:nth-child(1) {
+            animation-delay: 0s;
+            left: 10%;
+        }
+        .dust:nth-child(2) {
+            animation-delay: 0.2s;
+            left: 20%;
+        }
+        .dust:nth-child(3) {
+            animation-delay: 0.4s;
+            left: 30%;
+        }
+        .dust:nth-child(4) {
+            animation-delay: 0.6s;
+            left: 40%;
+        }
+        .dust:nth-child(5) {
+            animation-delay: 0.8s;
+            left: 50%;
+        }
+        .dust:nth-child(6) {
+            animation-delay: 1s;
+            left: 60%;
+        }
+        .dust:nth-child(7) {
+            animation-delay: 1.2s;
+            left: 70%;
+        }
+        .dust:nth-child(8) {
+            animation-delay: 1.4s;
+            left: 80%;
+        }
+        .dust:nth-child(9) {
+            animation-delay: 1.6s;
+            left: 90%;
+        }
+        .dust:nth-child(10) {
+            animation-delay: 1.8s;
+            left: 100%;
+        }
+
+        /* Clouds animation */
+        .cloud {
+            position: absolute;
+            top: 10%;
+            width: 100px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: cloudMove 10s linear infinite;
+        }
+
+        @keyframes cloudMove {
+            0% {
+                transform: translateX(-150px);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        /* Swaying tree leaves animation */
+        @keyframes swayLeaves {
+            0% {
+                transform: rotate(5deg);
+            }
+            50% {
+                transform: rotate(-5deg);
+            }
+            100% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Prediktor Kecepatan Angin per Provinsi</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="../main/index.html">Main</a>
+        <a href="../profile/index.html">Profile</a>
+    </nav>
+
+    <div class="container" id="main">
+        <div class="form-group">
+            <label for="province">Pilih Provinsi:</label>
+            <select id="province">
+                <option value="0">Pilih Provinsi</option>
+                <option value="Aceh">Aceh</option>
+                <option value="Bali">Bali</option>
+                <option value="Banten">Banten</option>
+                <option value="Bengkulu">Bengkulu</option>
+                <option value="Gorontalo">Gorontalo</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Jambi">Jambi</option>
+                <option value="Jawa Barat">Jawa Barat</option>
+                <option value="Jawa Tengah">Jawa Tengah</option>
+                <option value="Jawa Timur">Jawa Timur</option>
+                <option value="Kalimantan Barat">Kalimantan Barat</option>
+                <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                <option value="Kalimantan Timur">Kalimantan Timur</option>
+                <option value="Kalimantan Utara">Kalimantan Utara</option>
+                <option value="Kepulauan Riau">Kepulauan Riau</option>
+                <option value="Lampung">Lampung</option>
+                <option value="Maluku">Maluku</option>
+                <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+                <option value="Papua">Papua</option>
+                <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                <option value="Sulawesi Utara">Sulawesi Utara</option>
+                <option value="Sumatra Barat">Sumatra Barat</option>
+                <option value="Sumatra Selatan">Sumatra Selatan</option>
+                <option value="Sumatra Utara">Sumatra Utara</option>
+                <option value="Yogyakarta">Yogyakarta</option>
+            </select>
+        </div>
+        <button onclick="predictWindSpeed()">Prediksi Kecepatan Angin</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <div class="scene">
+        <div class="cloud"></div>
+        <div class="cloud" style="top: 20%; animation-duration: 8s;"></div>
+        <div class="house"></div>
+        <div class="tree">
+            <div class="leaves"></div>
+        </div>
+        <div class="dust"></div>
+        <div class="dust"></div>
+        <div class="dust"></div>
+        <div class="dust"></div>
+        <div class="dust"></div>
+        <div class="dust"></div>
+        <div class="dust"></div>
+        <div class="dust"></div>
+        <div class="dust"></div>
+        <div class="dust"></div>
+    </div>
+
+    <script>
+        function predictWindSpeed() {
+            var province = document.getElementById("province").value;
+            var result = document.getElementById("result");
+
+            if (province === "0") {
+                result.innerHTML = "Silakan pilih provinsi terlebih dahulu.";
+                return;
+            }
+
+            var windSpeed = "Kecepatan angin di " + province + " diperkirakan sekitar " + Math.floor(Math.random() * 40 + 10) + " km/jam.";
+            result.innerHTML = "<span>" + windSpeed + "</span>";
+        }
+    </script>
+</body>
+</html>
