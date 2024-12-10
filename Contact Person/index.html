@@ -9,7 +9,15 @@
             margin: 0;
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background: #f3f4f6;
+            background: url('/Web Elmo/kiminonawa.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            text-align: center;
+            min-height: 100vh;
+            color: white;
+            position: relative;
             animation: fadeIn 1s ease-in-out; /* Fade-in effect for the entire page */
         }
 
@@ -23,12 +31,25 @@
             }
         }
 
+        /* Redup background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Set the darkness of the background */
+            z-index: -1; /* Behind the content */
+        }
+
         header {
             background: linear-gradient(90deg, #42a5f5, #478ed1);
             color: white;
             padding: 20px 0;
             text-align: center;
             animation: slideInFromTop 1s ease-out; /* Slide-in effect for the header */
+            width: 100%;
         }
 
         /* Header slide-in effect */
@@ -64,6 +85,7 @@
             background: #444;
             padding: 10px 0;
             animation: fadeInFromLeft 1s ease-out; /* Slide-in effect for the navigation */
+            width: 100%;
         }
 
         /* Navigation slide-in effect */
@@ -85,7 +107,6 @@
             margin: 0 5px;
             border-radius: 5px;
             transition: background 0.3s;
-            animation: fadeInFromLeft 1s ease-out; /* Animating navigation items */
         }
 
         nav a:hover {
@@ -93,13 +114,14 @@
         }
 
         .content {
-            padding: 20px;
-            max-width: 800px;
+            padding: 40px; /* Larger padding for more space */
+            max-width: 900px; /* Increase max-width to make the content area wider */
             margin: 20px auto;
             background: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             animation: fadeInUp 1.5s ease-out; /* Animation for the content section */
+            text-align: left; /* Align text to the left inside the content */
         }
 
         /* Content fade-in-up effect */
@@ -116,7 +138,6 @@
 
         .content h2 {
             color: #333;
-            text-align: center;
             margin-bottom: 20px;
         }
 
@@ -139,16 +160,6 @@
         .contact-info a:hover {
             text-decoration: underline;
         }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #333;
-            color: white;
-            font-size: 0.9rem;
-            margin-top: 20px;
-        }
-
     </style>
 </head>
 <body>
@@ -158,7 +169,7 @@
     <nav>
         <a href="../main/index.html">Home</a>
         <a href="../Profile/index.html">Profile</a>
-        <a href="../News/index.html">News</a>
+        <a href="../Astronomy Fact/index.html">Astronomy Fact</a>
     </nav>
     <div class="content">
         <h2>Contact Information</h2>
@@ -167,7 +178,5 @@
             <p><strong>Facebook:</strong> <a href="https://www.facebook.com/ElmoFth" target="_blank">Elmo Fth</a></p>
         </div>
     </div>
-    <footer>
-    </footer>
 </body>
 </html>
