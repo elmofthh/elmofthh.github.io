@@ -10,13 +10,34 @@
             margin: 0;
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background: #f0f7ff;
+            background: url('/Web Elmo/kiminonawa.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Agar konten berada di tengah horizontal */
+            text-align: center; /* Menyelaraskan teks di dalam kolom */
+            min-height: 100vh; /* Membuat body memenuhi layar penuh */
+            color: white;
+            position: relative;
             animation: fadeIn 1.5s ease-in-out;
         }
 
+        /* Efek animasi masuk halaman */
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
+        }
+
+        /* Mengatur redupnya background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Mengatur tingkat kegelapan background */
+            z-index: -1; /* Menempatkan di belakang konten */
         }
 
         header {
@@ -163,6 +184,5 @@
         </div>
     </div>
 
-  
 </body>
 </html>
