@@ -3,29 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News</title>
+    <title>Astronomy Facts</title>
     <style>
         /* Reset dan gaya umum */
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background: #f5f5f5;
+            background: url('/Web Elmo/kiminonawa.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Agar konten berada di tengah horizontal */
+            text-align: center; /* Menyelaraskan teks di dalam kolom */
+            min-height: 100vh; /* Membuat body memenuhi layar penuh */
+            color: white;
+            position: relative;
+            animation: fadeIn 2s ease-in-out; /* Animasi masuk halaman */
         }
+
+        /* Efek animasi masuk halaman */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Mengatur redupnya background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Mengatur tingkat kegelapan background */
+            z-index: -1; /* Menempatkan di belakang konten */
+        }
+
         header {
             background: linear-gradient(90deg, #1e88e5, #1565c0);
             color: white;
             padding: 20px 0;
             text-align: center;
+            width: 100%; /* Agar header memenuhi lebar layar */
         }
         header h1 {
             margin: 0;
             font-size: 2.5rem;
         }
+
         nav {
             text-align: center;
             background: #444;
             padding: 10px 0;
+            width: 100%; /* Agar navigasi memenuhi lebar layar */
         }
         nav a {
             text-decoration: none;
@@ -38,19 +73,25 @@
         nav a:hover {
             background: #666;
         }
+
         .content {
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Menjaga konten terpusat horizontal */
+            flex-wrap: wrap; /* Agar kolom dapat menyesuaikan dengan ukuran layar */
+            gap: 20px; /* Jarak antar kolom */
             padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
+            width: 90%; /* Agar konten tidak terlalu lebar */
+            max-width: 1200px; /* Menyediakan batas lebar maksimal */
+            margin-top: 50px; /* Menambahkan jarak antara header dan kolom */
         }
+
         .news-column {
-            width: 48%;
             padding: 20px;
             background: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            width: 45%; /* Menentukan lebar kolom */
+            min-width: 280px; /* Menjamin kolom tidak terlalu sempit */
         }
         .news-column:nth-child(1) {
             background: #d1c4e9;
@@ -67,26 +108,12 @@
             font-size: 1rem;
             line-height: 1.8;
         }
-        .news-column a {
-            text-decoration: none;
-            color: #42a5f5;
-            font-weight: bold;
-        }
-        .news-column a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #333;
-            color: white;
-            font-size: 0.9rem;
-        }
+
     </style>
 </head>
 <body>
     <header>
-        <h1>News</h1>
+        <h1>Astronomy Facts</h1>
     </header>
     <nav>
         <a href="../main/index.html">Home</a>
@@ -95,16 +122,13 @@
     </nav>
     <div class="content">
         <div class="news-column">
-            <h3>News Title 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet libero nec augue tincidunt tincidunt. <a href="#">Read more...</a></p>
+            <h3>Fakta Astronomi 1</h3>
+            <p>Planet Venus memiliki suhu permukaan yang sangat tinggi, mencapai sekitar 465°C, lebih panas dari Merkurius meskipun Venus lebih jauh dari Matahari.</p>
         </div>
         <div class="news-column">
-            <h3>News Title 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Nunc eu felis dapibus condimentum sit amet a augue. <a href="#">Read more...</a></p>
+            <h3>Fakta Astronomi 2</h3>
+            <p>Di galaksi kita, Bima Sakti, terdapat lebih dari 100 miliar bintang. Beberapa bintang lebih besar dari Matahari, dan beberapa lebih kecil.</p>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2024 News Page. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
