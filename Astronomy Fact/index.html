@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astronomy Facts</title>
     <style>
-        /* Reset dan gaya umum */
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
@@ -14,15 +13,14 @@
             background-size: cover;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Agar konten berada di tengah horizontal */
-            text-align: center; /* Menyelaraskan teks di dalam kolom */
-            min-height: 100vh; /* Membuat body memenuhi layar penuh */
+            align-items: center;
+            text-align: center; 
+            min-height: 100vh; 
             color: white;
             position: relative;
-            animation: fadeIn 2s ease-in-out; /* Animasi masuk halaman */
+            animation: fadeIn 2s ease-in-out; 
         }
 
-        /* Efek animasi masuk halaman */
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -32,7 +30,6 @@
             }
         }
 
-        /* Mengatur redupnya background */
         body::before {
             content: '';
             position: absolute;
@@ -40,8 +37,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Mengatur tingkat kegelapan background */
-            z-index: -1; /* Menempatkan di belakang konten */
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: -1; 
         }
 
         header {
@@ -49,7 +46,7 @@
             color: white;
             padding: 20px 0;
             text-align: center;
-            width: 100%; /* Agar header memenuhi lebar layar */
+            width: 100%; 
         }
         header h1 {
             margin: 0;
@@ -60,7 +57,7 @@
             text-align: center;
             background: #444;
             padding: 10px 0;
-            width: 100%; /* Agar navigasi memenuhi lebar layar */
+            width: 100%; 
         }
         nav a {
             text-decoration: none;
@@ -76,13 +73,13 @@
 
         .content {
             display: flex;
-            justify-content: center; /* Menjaga konten terpusat horizontal */
-            flex-wrap: wrap; /* Agar kolom dapat menyesuaikan dengan ukuran layar */
-            gap: 20px; /* Jarak antar kolom */
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 20px; 
             padding: 20px;
-            width: 90%; /* Agar konten tidak terlalu lebar */
-            max-width: 1200px; /* Menyediakan batas lebar maksimal */
-            margin-top: 50px; /* Menambahkan jarak antara header dan kolom */
+            width: 90%; 
+            max-width: 1200px;
+            margin-top: 50px; 
         }
 
         .news-column {
@@ -90,8 +87,8 @@
             background: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            width: 45%; /* Menentukan lebar kolom */
-            min-width: 280px; /* Menjamin kolom tidak terlalu sempit */
+            width: 45%; 
+            min-width: 280px; 
         }
         .news-column:nth-child(1) {
             background: #d1c4e9;
